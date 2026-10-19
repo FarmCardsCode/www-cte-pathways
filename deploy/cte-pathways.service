@@ -1,7 +1,7 @@
 # Gunicorn service for the CTE Pathways site. Install with:
 #   sudo cp deploy/cte-pathways.service /etc/systemd/system/
 #   sudo systemctl daemon-reload && sudo systemctl enable --now cte-pathways
-# Port 8001 keeps it clear of farmcardscode.org (8000) on the same VM.
+# Runs on its own VM; only the local cloudflared reaches the port.
 [Unit]
 Description=CTE Pathways Gunicorn Service
 After=network.target
@@ -10,7 +10,7 @@ After=network.target
 User=cte-pathways
 Group=cte-pathways
 WorkingDirectory=/srv/cte-pathways
-ExecStart=/srv/cte-pathways/.venv/bin/gunicorn --no-control-socket -w 2 -b 127.0.0.1:8001 wsgi:app
+ExecStart=/srv/cte-pathways/.venv/bin/gunicorn --no-control-socket -w 2 -b 127.0.0.1:8000 wsgi:app
 Restart=always
 RestartSec=3
 

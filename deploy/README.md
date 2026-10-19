@@ -1,8 +1,12 @@
 # Deploying
 
-Not deployed yet: hosting is pending district IT approval. The plan is to
-run this site on the same VM as farmcardscode.org as its own service, with
-a district subdomain pointed at it through cloudflared.
+Not deployed yet: hosting is pending district IT approval. The plan is a
+dedicated VM on `pve2`, provisioned from the server catalog in
+`school-services-infra`, running this app under gunicorn with its own
+Cloudflare tunnel. The district subdomain points at that tunnel only.
+
+The steps below are the by-hand version; once a server role exists in
+`school-services-infra`, it should do this instead.
 
 ## One-time server setup
 
@@ -17,7 +21,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 sudo cp deploy/cte-pathways.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now cte-pathways             # serves on 127.0.0.1:8001
+sudo systemctl enable --now cte-pathways             # serves on 127.0.0.1:8000
 
 sudo deploy/install-auto-update.sh 5min              # pull main every 5 min
 ```
@@ -26,9 +30,9 @@ If the repo is private, add a read-only deploy key for the checkout owner,
 clone over SSH instead, and install the timer with
 `sudo REPO_URL=git@github.com:FarmCardsCode/www-cte-pathways.git deploy/install-auto-update.sh 5min`.
 
-Then add an ingress rule in the cloudflared config mapping the approved
-hostname to `http://127.0.0.1:8001`, and have district IT point that
-hostname at the tunnel.
+Then create this VM's own tunnel, route the approved hostname to
+`http://127.0.0.1:8000`, and have district IT point that hostname at the
+tunnel.
 
 ## Day to day
 

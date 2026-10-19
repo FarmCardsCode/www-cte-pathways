@@ -59,12 +59,15 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
   `cte.<district domain>`) pointing at the maintainer's server, pending
   approval through the district IT request. Until that's approved, there is
   no public URL. Don't hardcode any domain.
-- Same server as farmcardscode.org: Proxmox VM 500, reached via jump host
-  (`ssh -J jlong@10.64.62.201 jlong@172.30.1.100`), exposed through
-  cloudflared. This site runs as its **own** systemd service on its own port,
-  separate from farmcardscode.org, so neither can take down the other.
-- `deploy/` has the service unit and an auto-update timer (copied from
-  farmcardscode.org): once installed, pushing to `main` goes live within
+- Its **own dedicated VM** on `pve2`, not shared with farmcardscode.org, to
+  limit blast radius. It gets its own Cloudflare tunnel, so the district
+  hostname can only ever reach this site. The VM is provisioned from the
+  server catalog in `~/Code/school-services-infra` (`ansible/vars/servers.yml`
+  plus a server role), like the other services there; that repo's
+  `docs/architecture.md` and `docs/edge.md` describe the network, tunnels,
+  and backups. The VM's ID/IP aren't assigned yet.
+- `deploy/` has the gunicorn service unit and an auto-update timer (copied
+  from farmcardscode.org): once installed, pushing to `main` goes live within
   a few minutes. Keep `main` deployable at all times.
 - If this repo stays private, the server needs a read-only GitHub deploy key
   and `REPO_URL` set to the SSH URL (see `deploy/README.md`).
