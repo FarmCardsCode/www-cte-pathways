@@ -66,7 +66,7 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
   svcpub network, not shared with farmcardscode.org (blast radius), with its
   own Cloudflare tunnel `cte-pathways`. Drafted in
   `~/Code/school-services-infra` (commit `a990e2f`): catalog entry in
-  `ansible/vars/servers.yml` (`enabled: false` until approval), role
+  `ansible/vars/servers.yml` (enabled; unpublished until approval), role
   `ansible/tasks/server-roles/cte.yml`, and **`docs/cte-pathways.md`, the
   source of truth for hosting**. Built and checked 2026-10-19 (serves
   this repo at 127.0.0.1:8000, update timer running), not published.
