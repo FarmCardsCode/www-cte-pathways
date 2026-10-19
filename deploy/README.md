@@ -1,6 +1,6 @@
 # Deploying
 
-Not deployed yet: hosting is pending district IT approval. The plan is a
+Built 2026-10-19 on VM 508 but not published: hosting is pending district IT approval. The plan is a
 dedicated VM on `pve2`, provisioned from the server catalog in
 `school-services-infra`, running this app under gunicorn with its own
 Cloudflare tunnel. The district subdomain points at that tunnel only.

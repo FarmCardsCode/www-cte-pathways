@@ -68,7 +68,8 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
   `~/Code/school-services-infra` (commit `a990e2f`): catalog entry in
   `ansible/vars/servers.yml` (`enabled: false` until approval), role
   `ansible/tasks/server-roles/cte.yml`, and **`docs/cte-pathways.md`, the
-  source of truth for hosting**. Not built yet.
+  source of truth for hosting**. Built and checked 2026-10-19 (serves
+  this repo at 127.0.0.1:8000, update timer running), not published.
 - **Deploys:** the role clones this repo and runs this repo's
   `deploy/auto-update.sh` on a 5-minute timer, so pushing to `main` is the
   deploy. Keep `main` deployable at all times. The timer doesn't reinstall
