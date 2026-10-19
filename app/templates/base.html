@@ -8,6 +8,14 @@
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
   <meta name="theme-color" content="#DA2323">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>
+    // Apply a saved light/dark choice before the page paints (see theme.js).
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
+  <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -24,6 +32,10 @@
         <a href="{{ url_for('main.index') }}"{% if request.endpoint in ('main.index', 'main.pathway_detail') %} aria-current="page"{% endif %}>Pathways</a>
         <a href="{{ url_for('main.diplomas') }}"{% if request.endpoint == 'main.diplomas' %} aria-current="page"{% endif %}>Diplomas &amp; Honors</a>
       </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle hidden aria-label="Color theme: auto" title="Color theme: auto">
+        <span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>
+        <span class="theme-toggle-text" aria-hidden="true">Auto</span>
+      </button>
     </div>
   </header>
 
