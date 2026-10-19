@@ -6,7 +6,7 @@ dedicated VM on `pve2`, provisioned from the server catalog in
 `school-services-infra`, running this app under gunicorn with its own
 Cloudflare tunnel. The district subdomain points at that tunnel only.
 
-That role now exists, drafted and not yet run: VM `508` `cte`, role
+That role exists and built the live server: VM `508` `cte`, role
 `ansible/tasks/server-roles/cte.yml` in `school-services-infra`, documented
 in its `docs/cte-pathways.md`. Use it. The steps below are only the by-hand
 fallback.
@@ -40,7 +40,8 @@ tunnel.
 ## Day to day
 
 Push to `main`; the timer fast-forwards the server and restarts the service.
-To deploy immediately instead of waiting:
+To deploy immediately instead of waiting (the VM is reached through pve2
+as a jump host, logging in as `cyberlab`, since root login is refused):
 
 ```sh
 sudo systemctl start cte-pathways-update.service

@@ -11,12 +11,13 @@ pathway it should answer:
 - What a student earns for completing it: completer status, industry
   certifications, dual credit, endorsements, etc.
 
-Status (2026-10-19): **first build done** for Farmington High School (FHS):
+Status (2026-10-19): **live and in use.** Farmington High School (FHS):
 18 CTE pathways from the FHS "Honor Graduate Requirements & Pathways" guide
-(a Google Doc the maintainer shared), an overview page with filters, one page
-per pathway, and a Diplomas & Honors explainer. Branding follows the district
-site, farmcards.org (red `#DA2323`, black, white, logo gold, Inter, cardinal
-logo), with permission from the maintainer.
+(a Google Doc the maintainer shared; ask them for the link if it isn't in
+your memory. Export it with `/export?format=html` to see merged table
+cells, which show shared courses), an overview page with filters, one page per pathway, a
+Diplomas & Honors explainer, and an Auto/Light/Dark theme menu. Branding
+follows the district site, farmcards.org, with the maintainer's permission.
 
 ## Audience and tone
 
@@ -30,6 +31,38 @@ logo), with permission from the maintainer.
 - **No emoji anywhere in the UI.** Use simple SVG line icons instead.
 - Accessibility matters: real headings, good contrast in light and dark
   mode, keyboard navigable, no information conveyed by color alone.
+
+## Design
+
+- Colors match farmcards.org: cardinal red `#DA2323` header with a black
+  rule, black footer, logo gold `#F6BC3E` for "Counts toward Honor Graduate"
+  tags. Inter/Helvetica font stack (no web font download). Logo is
+  `app/static/img/cardinal.png`, resized from the district site's logo.
+- All colors are tokens on `:root` in `app/static/css/style.css`. Dark mode
+  applies via `prefers-color-scheme` unless `<html data-theme="light">`,
+  and is forced by `data-theme="dark"`.
+- Theme menu (header, top right): an accessible menu button (`menuitemradio`
+  items) in `base.html` + `app/static/js/theme.js`. The choice is saved in
+  `localStorage` and applied by an inline script in `<head>` before paint.
+  The button's icon is picked by CSS from `data-theme`. The menu is hidden
+  without JS (the site then follows the device).
+- Icons: all from the hand-drawn SVG macro set in `app/templates/_icons.html`
+  (`icon(name, class)`), 24x24, stroke 1.8. Add new icons there; don't use
+  Unicode glyphs as icons (they render at mismatched sizes across fonts).
+- Filters on the home page are a plain GET form (works without JS);
+  `app/static/js/filters.js` just auto-submits on change.
+
+## Verifying changes
+
+- Render every route with Flask's test client (all pathway slugs, `/`,
+  filter query strings, `/diplomas`, a 404).
+- Screenshots: headless Chrome (`--headless=new --screenshot`) can't go
+  narrower than about 500px. The maintainer's Mac is in dark mode, so pass
+  `--blink-settings=preferredColorScheme=1` for light.
+- Interactive checks (the theme menu): a small Node script that drives
+  headless Chrome over the DevTools protocol (`--remote-debugging-port`,
+  `Input.dispatchMouseEvent`/`dispatchKeyEvent`; Enter needs `text: "\r"`).
+  Node's built-in `WebSocket` is enough, no packages.
 
 ## Content model
 
@@ -97,6 +130,16 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
   Cloudflare account); the likely route is a Cloudflare for SaaS custom
   hostname on top of `cte.farmcardscode.org`. Details in
   `docs/cte-pathways.md` in school-services-infra.
+- **Deploy now** (when the maintainer asks; otherwise just wait for the
+  timer): the VM isn't reachable directly and refuses root. SSH through
+  pve2 as a jump host (`ProxyCommand` to `root@<pve2>`; address in
+  school-services-infra's `ansible/inventory.yml`) as `cyberlab@172.30.1.13`
+  with `~/.ssh/claude-key`, then
+  `sudo -n systemctl start cte-pathways-update.service`. It logs
+  "Updated <old> -> <new> and restarted cte-pathways". The site is briefly
+  down while it restarts, so retry a check that fails right after.
+- Workflow the maintainer uses: review locally, then "commit, push, deploy".
+  Don't push without being asked.
 - Requests to update the site come in ad hoc from staff; quick, safe content
   edits are the common case.
 
@@ -105,9 +148,21 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
 - Structure: overview grouped by career area with filters (career area,
   where taught, counts toward Honor Grad) that work without JS; detail page
   per pathway; Diplomas & Honors page.
+- Branding: district (farmcards.org) colors and cardinal logo.
+- Theme: Auto/Light/Dark dropdown menu, not a cycling toggle.
 - License: MIT.
+- The Class of 2027 Honor Grad alternative ("2 AP classes/ Spanish 3/ Human
+  Body Systems/Anatomy") is left off: it's ambiguous (one of these, or all?)
+  and doesn't apply to junior high readers.
 
 ## Still open
 
-- Grade levels for each course, and per-pathway certifications.
+- Grade levels for each course, and per-pathway certifications (neither is
+  in the guide; sections stay hidden until filled in).
+- Level 3 of Information Technology & Security is "Cybersecurity Security"
+  in the guide, likely a typo for "Cybersecurity". Left as written until
+  confirmed.
+- Pathway `summary`/`careers` and the "Words to know" definitions were
+  drafted by Claude; the maintainer approved publishing them but staff may
+  want to revise.
 - Who besides the maintainer requests/approves content changes.
