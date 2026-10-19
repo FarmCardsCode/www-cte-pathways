@@ -207,8 +207,26 @@ a:hover {
   border-color: #fff;
 }
 
-.theme-toggle-caret {
-  font-size: 0.75rem;
+.theme-toggle .icon,
+.theme-options .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-toggle .theme-toggle-caret {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+/* The button shows the icon for the active setting */
+.theme-icon {
+  display: none;
+}
+
+:root:not([data-theme]) .theme-icon-auto,
+:root[data-theme="light"] .theme-icon-light,
+:root[data-theme="dark"] .theme-icon-dark {
+  display: block;
 }
 
 .theme-options {
@@ -258,16 +276,13 @@ a:hover {
   font-weight: 700;
 }
 
-.theme-options button[aria-checked="true"]::after {
-  content: "\2713";
+.theme-check {
   margin-left: auto;
-  font-variant-emoji: text;
+  visibility: hidden;
 }
 
-.theme-toggle-icon {
-  font-size: 1.1rem;
-  line-height: 1;
-  font-variant-emoji: text;
+.theme-options button[aria-checked="true"] .theme-check {
+  visibility: visible;
 }
 
 .site-title {

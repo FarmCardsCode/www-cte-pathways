@@ -2,8 +2,6 @@
 // light/dark set data-theme on <html>, which style.css reads. Keyboard:
 // Enter/Space/Down opens, arrows move, Escape or Tab closes.
 (() => {
-  // Plain geometric characters (no emoji forms): half, empty, full circle.
-  const ICONS = { auto: "◐", light: "○", dark: "●" };
   const LABELS = { auto: "Auto", light: "Light", dark: "Dark" };
 
   const root = document.documentElement;
@@ -16,7 +14,6 @@
   const current = () => root.dataset.theme || "auto";
 
   const show = (mode) => {
-    button.querySelector(".theme-toggle-icon").textContent = ICONS[mode];
     button.querySelector(".theme-toggle-text").textContent = LABELS[mode];
     button.setAttribute("aria-label", `Color theme: ${LABELS[mode].toLowerCase()}`);
     items.forEach((item) => item.setAttribute("aria-checked", String(item.dataset.mode === mode)));

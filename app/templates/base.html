@@ -1,4 +1,5 @@
 <!doctype html>
+{% from "_icons.html" import icon %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,14 +35,14 @@
       </nav>
       <div class="theme-menu" data-theme-menu hidden>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-options" aria-label="Color theme: auto" title="Color theme">
-          <span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>
+          {{ icon("theme-auto", "icon theme-icon theme-icon-auto") }}{{ icon("theme-light", "icon theme-icon theme-icon-light") }}{{ icon("theme-dark", "icon theme-icon theme-icon-dark") }}
           <span class="theme-toggle-text" aria-hidden="true">Auto</span>
-          <span class="theme-toggle-caret" aria-hidden="true">&#x25BE;</span>
+          {{ icon("chevron-down", "icon theme-toggle-caret") }}
         </button>
         <ul class="theme-options" id="theme-options" role="menu" aria-labelledby="theme-toggle" hidden>
-          <li role="none"><button type="button" role="menuitemradio" aria-checked="true" data-mode="auto" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>Auto (match device)</button></li>
-          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="light" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25CB;</span>Light</button></li>
-          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="dark" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25CF;</span>Dark</button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="true" data-mode="auto" tabindex="-1">{{ icon("theme-auto") }}Auto (match device){{ icon("check", "icon theme-check") }}</button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="light" tabindex="-1">{{ icon("theme-light") }}Light{{ icon("check", "icon theme-check") }}</button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="dark" tabindex="-1">{{ icon("theme-dark") }}Dark{{ icon("check", "icon theme-check") }}</button></li>
         </ul>
       </div>
     </div>
