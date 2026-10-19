@@ -1,0 +1,78 @@
+/* Placeholder styles for the starter scaffold. The real visual design is
+   still to be decided (see CLAUDE.md, open questions). */
+
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #1a1d23;
+  --muted: #555d6b;
+  --accent: #1f5fae;
+  --border: #d8dce3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171b;
+    --text: #eceef2;
+    --muted: #a3aab7;
+    --accent: #7fb0f0;
+    --border: #2e333c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+}
+
+.site-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.page {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.pathway-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pathway-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pathway-list p,
+.course-list p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.course-list li {
+  margin-bottom: 0.75rem;
+}

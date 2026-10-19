@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Career and Technical Education Pathways</h1>
+<p class="lead">Explore the pathways offered in the district: the classes involved, the order to take them in, and what you earn for finishing.</p>
+
+{% if pathways %}
+<ul class="pathway-list">
+  {% for pathway in pathways %}
+  <li>
+    <a href="{{ url_for('main.pathway_detail', slug=pathway.slug) }}">{{ pathway.title }}</a>
+    <p>{{ pathway.summary }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Pathway information is coming soon.</p>
+{% endif %}
+{% endblock %}

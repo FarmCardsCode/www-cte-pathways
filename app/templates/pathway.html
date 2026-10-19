@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ pathway.title }} | CTE Pathways{% endblock %}
+
+{% block content %}
+<p><a href="{{ url_for('main.index') }}">All pathways</a></p>
+<h1>{{ pathway.title }}</h1>
+<p class="lead">{{ pathway.summary }}</p>
+
+<h2>Course sequence</h2>
+<ol class="course-list">
+  {% for course in pathway.courses | sort(attribute="order") %}
+  <li>
+    <strong>{{ course.title }}</strong>{% if course.grade %} (grades {{ course.grade }}){% endif %}
+    {% if course.description %}<p>{{ course.description }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+
+{% if pathway.completion %}
+<h2>What you earn</h2>
+<p>{{ pathway.completion.summary }}</p>
+{% endif %}
+{% endblock %}
