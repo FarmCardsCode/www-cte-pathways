@@ -32,10 +32,18 @@
         <a href="{{ url_for('main.index') }}"{% if request.endpoint in ('main.index', 'main.pathway_detail') %} aria-current="page"{% endif %}>Pathways</a>
         <a href="{{ url_for('main.diplomas') }}"{% if request.endpoint == 'main.diplomas' %} aria-current="page"{% endif %}>Diplomas &amp; Honors</a>
       </nav>
-      <button type="button" class="theme-toggle" data-theme-toggle hidden aria-label="Color theme: auto" title="Color theme: auto">
-        <span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>
-        <span class="theme-toggle-text" aria-hidden="true">Auto</span>
-      </button>
+      <div class="theme-menu" data-theme-menu hidden>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="theme-options" aria-label="Color theme: auto" title="Color theme">
+          <span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>
+          <span class="theme-toggle-text" aria-hidden="true">Auto</span>
+          <span class="theme-toggle-caret" aria-hidden="true">&#x25BE;</span>
+        </button>
+        <ul class="theme-options" id="theme-options" role="menu" aria-labelledby="theme-toggle" hidden>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="true" data-mode="auto" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25D0;</span>Auto (match device)</button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="light" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25CB;</span>Light</button></li>
+          <li role="none"><button type="button" role="menuitemradio" aria-checked="false" data-mode="dark" tabindex="-1"><span class="theme-toggle-icon" aria-hidden="true">&#x25CF;</span>Dark</button></li>
+        </ul>
+      </div>
     </div>
   </header>
 

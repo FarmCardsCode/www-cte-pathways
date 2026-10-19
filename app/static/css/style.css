@@ -166,8 +166,9 @@ a:hover {
   width: 100%;
 }
 
-.theme-toggle {
+.theme-menu {
   order: 2;
+  position: relative;
 }
 
 @media (min-width: 40rem) {
@@ -176,7 +177,7 @@ a:hover {
     width: auto;
   }
 
-  .theme-toggle {
+  .theme-menu {
     order: 3;
   }
 }
@@ -196,12 +197,71 @@ a:hover {
   cursor: pointer;
 }
 
-.theme-toggle[hidden] {
+.theme-menu[hidden],
+.theme-options[hidden] {
   display: none;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.theme-toggle[aria-expanded="true"] {
   border-color: #fff;
+}
+
+.theme-toggle-caret {
+  font-size: 0.75rem;
+}
+
+.theme-options {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  z-index: 20;
+  min-width: 14rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.theme-options button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  white-space: nowrap;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  padding: 0.5rem 0.6rem;
+  cursor: pointer;
+}
+
+.theme-options button:hover,
+.theme-options button:focus-visible {
+  background: var(--bg);
+}
+
+.theme-options button:focus-visible {
+  outline-offset: -2px;
+}
+
+/* Checked state: bold text plus a check mark, not color alone */
+.theme-options button[aria-checked="true"] {
+  font-weight: 700;
+}
+
+.theme-options button[aria-checked="true"]::after {
+  content: "\2713";
+  margin-left: auto;
+  font-variant-emoji: text;
 }
 
 .theme-toggle-icon {
