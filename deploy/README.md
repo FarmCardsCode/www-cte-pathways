@@ -5,8 +5,10 @@ dedicated VM on `pve2`, provisioned from the server catalog in
 `school-services-infra`, running this app under gunicorn with its own
 Cloudflare tunnel. The district subdomain points at that tunnel only.
 
-The steps below are the by-hand version; once a server role exists in
-`school-services-infra`, it should do this instead.
+That role now exists, drafted and not yet run: VM `508` `cte`, role
+`ansible/tasks/server-roles/cte.yml` in `school-services-infra`, documented
+in its `docs/cte-pathways.md`. Use it. The steps below are only the by-hand
+fallback.
 
 ## One-time server setup
 

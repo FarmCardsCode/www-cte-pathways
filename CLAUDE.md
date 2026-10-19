@@ -11,7 +11,7 @@ pathway it should answer:
 - What a student earns for completing it: completer status, industry
   certifications, dual credit, endorsements, etc.
 
-Status: **new project, nothing built beyond a starter scaffold.** The first
+Status (2026-10-19): **new project, nothing built beyond a starter scaffold.** The first
 session should settle the open questions below with the user before building
 out pages.
 
@@ -55,22 +55,32 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
 
 ## Hosting and deploys
 
-- **Planned:** the district domain gets a subdomain (e.g.
-  `cte.<district domain>`) pointing at the maintainer's server, pending
-  approval through the district IT request. Until that's approved, there is
-  no public URL. Don't hardcode any domain.
-- Its **own dedicated VM** on `pve2`, not shared with farmcardscode.org, to
-  limit blast radius. It gets its own Cloudflare tunnel, so the district
-  hostname can only ever reach this site. The VM is provisioned from the
-  server catalog in `~/Code/school-services-infra` (`ansible/vars/servers.yml`
-  plus a server role), like the other services there; that repo's
-  `docs/architecture.md` and `docs/edge.md` describe the network, tunnels,
-  and backups. The VM's ID/IP aren't assigned yet.
-- `deploy/` has the gunicorn service unit and an auto-update timer (copied
-  from farmcardscode.org): once installed, pushing to `main` goes live within
-  a few minutes. Keep `main` deployable at all times.
-- If this repo stays private, the server needs a read-only GitHub deploy key
-  and `REPO_URL` set to the SSH URL (see `deploy/README.md`).
+- **Nothing is hosted yet.** Long-term hosting is pending district IT
+  approval (the maintainer's IT request sheet, 2026-10-19). There is no
+  public URL. Don't hardcode any domain.
+- **Repo:** public on GitHub, `FarmCardsCode/www-cte-pathways`, the only
+  remote. Kept on GitHub (not the maintainer's Forgejo) because pve2's
+  guests can reach GitHub but not Forgejo, and public means the server pulls
+  over HTTPS with no key.
+- **Server:** its own dedicated VM, `508` `cte` at `172.30.1.13` on pve2's
+  svcpub network, not shared with farmcardscode.org (blast radius), with its
+  own Cloudflare tunnel `cte-pathways`. Drafted in
+  `~/Code/school-services-infra` (commit `a990e2f`): catalog entry in
+  `ansible/vars/servers.yml` (`enabled: false` until approval), role
+  `ansible/tasks/server-roles/cte.yml`, and **`docs/cte-pathways.md`, the
+  source of truth for hosting**. Not built yet.
+- **Deploys:** the role clones this repo and runs this repo's
+  `deploy/auto-update.sh` on a 5-minute timer, so pushing to `main` is the
+  deploy. Keep `main` deployable at all times. The timer doesn't reinstall
+  dependencies: if `requirements.txt` changes, the role must be re-run. The
+  role writes its own systemd units; `deploy/cte-pathways.service` and
+  `deploy/install-auto-update.sh` are only the by-hand fallback.
+- **Open: the district hostname.** A plain CNAME from the district's DNS to
+  the tunnel won't work (a tunnel only routes hostnames in the same
+  Cloudflare account). Options (Cloudflare for SaaS custom hostname, the
+  district running the subdomain on Cloudflare, or just
+  `cte.farmcardscode.org`) are in `docs/cte-pathways.md` in
+  school-services-infra. It decides what to ask district IT for.
 - Requests to update the site come in ad hoc from staff; quick, safe content
   edits are the common case.
 
