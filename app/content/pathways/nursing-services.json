@@ -1,0 +1,37 @@
+{
+  "slug": "nursing-services",
+  "title": "Nursing Services",
+  "career_area": "healthcare",
+  "h2": true,
+  "summary": "Start training to become a nurse while still in high school. After the intro class, students move into the LPN program.",
+  "careers": [
+    "Licensed practical nurse (LPN)",
+    "Registered nurse (with more college)"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Healthcare"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Licensed Practical Nurse (LPN) Pathway"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Licensed Practical Nurse (LPN) Pathway"
+      ]
+    }
+  ],
+  "partners": [
+    "NWACC"
+  ],
+  "partner_note": "The LPN program is offered through NWACC's secondary career center.",
+  "certifications": [],
+  "published": true
+}

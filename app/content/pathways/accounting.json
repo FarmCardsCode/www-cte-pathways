@@ -1,0 +1,35 @@
+{
+  "slug": "accounting",
+  "title": "Accounting",
+  "career_area": "business",
+  "h2": true,
+  "summary": "Learn how businesses keep track of money: recording sales and costs, reading financial reports, and planning budgets.",
+  "careers": [
+    "Bookkeeper",
+    "Accounting clerk",
+    "Accountant (with a college degree)"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Business"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Accounting I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Business Intelligence"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

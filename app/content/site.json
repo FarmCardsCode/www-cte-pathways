@@ -1,0 +1,16 @@
+{
+  "school_name": "Farmington High School",
+  "school_short": "FHS",
+  "site_name": "CTE Pathways",
+  "partners": {
+    "NWTI": {
+      "name": "Northwest Technical Institute (NWTI)",
+      "short": "NWTI"
+    },
+    "NWACC": {
+      "name": "NWACC's secondary career center",
+      "short": "NWACC career center"
+    }
+  },
+  "application_note": "Classes offered through a college, NWACC's secondary career center, or NWTI require test scores and an application."
+}

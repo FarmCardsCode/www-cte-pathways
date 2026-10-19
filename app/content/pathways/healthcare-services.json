@@ -1,0 +1,41 @@
+{
+  "slug": "healthcare-services",
+  "title": "Healthcare Services",
+  "career_area": "healthcare",
+  "h2": true,
+  "summary": "Learn how the human body works and the language of medicine, then train for a hands-on healthcare job.",
+  "careers": [
+    "Certified nursing assistant (CNA)",
+    "Emergency medical responder (EMR)",
+    "Dental assistant"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Healthcare"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Anatomy & Physiology",
+        "Medical Terminology"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Certified Nursing Assistant (CNA)",
+        "Emergency Medical Responder (EMR)",
+        "Dental Assistant"
+      ]
+    }
+  ],
+  "partners": [
+    "NWACC"
+  ],
+  "partner_note": "CNA and EMR are offered through NWACC's secondary career center.",
+  "certifications": [],
+  "published": true
+}

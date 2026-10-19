@@ -1,23 +1,98 @@
 {% extends "base.html" %}
-{% block title %}{{ pathway.title }} | CTE Pathways{% endblock %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ pathway.title }} | {{ site.site_name }} | {{ site.school_name }}{% endblock %}
+{% block description %}{{ pathway.summary }}{% endblock %}
 
 {% block content %}
-<p><a href="{{ url_for('main.index') }}">All pathways</a></p>
-<h1>{{ pathway.title }}</h1>
-<p class="lead">{{ pathway.summary }}</p>
+<p class="back"><a href="{{ url_for('main.index') }}">{{ icon("arrow-left") }}All pathways</a></p>
 
-<h2>Course sequence</h2>
-<ol class="course-list">
-  {% for course in pathway.courses | sort(attribute="order") %}
-  <li>
-    <strong>{{ course.title }}</strong>{% if course.grade %} (grades {{ course.grade }}){% endif %}
-    {% if course.description %}<p>{{ course.description }}</p>{% endif %}
-  </li>
-  {% endfor %}
-</ol>
+<header class="pathway-header">
+  <p class="eyebrow">{{ icon(area.icon) }}{{ area.name }}</p>
+  <h1>{{ pathway.title }}</h1>
+  {% if pathway.formerly %}<p class="formerly">Formerly called {{ pathway.formerly }}</p>{% endif %}
+  <p class="lead">{{ pathway.summary }}</p>
+  <ul class="tags">
+    {% if pathway.h2 %}
+    <li class="tag tag-honors">{{ icon("award") }}Counts toward Honor Graduate</li>
+    {% endif %}
+    {% for partner in pathway.partners or [] %}
+    <li class="tag">{{ icon("pin") }}Classes at {{ site.partners[partner].short }}</li>
+    {% endfor %}
+  </ul>
+</header>
 
-{% if pathway.completion %}
-<h2>What you earn</h2>
-<p>{{ pathway.completion.summary }}</p>
+<section aria-labelledby="classes">
+  <h2 id="classes">{{ icon("steps") }}Classes, in order</h2>
+  <p>Take one class at each level, starting with Level 1.</p>
+  <ol class="levels">
+    {% for level in pathway.levels | sort(attribute="level") %}
+    <li class="level">
+      <span class="level-label">Level {{ level.level }}</span>
+      <div class="level-body">
+        {% if level.options | length > 1 %}
+        <p class="level-choose">Choose one:</p>
+        <ul class="level-options">
+          {% for course in level.options %}<li>{{ course }}</li>{% endfor %}
+        </ul>
+        {% else %}
+        <p class="level-course">{{ level.options[0] }}</p>
+        {% endif %}
+        {% if shared[level.level] %}
+        <p class="level-shared">Also Level {{ level.level }} of
+          {% for other in shared[level.level] -%}
+          <a href="{{ url_for('main.pathway_detail', slug=other.slug) }}">{{ other.title }}</a>{% if not loop.last %}{% if loop.revindex == 2 %} and {% else %}, {% endif %}{% endif %}
+          {%- endfor %}.
+        </p>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section aria-labelledby="where">
+  <h2 id="where">{{ icon("pin") }}Where it's taught</h2>
+  {% if pathway.partners %}
+  <p>{{ pathway.partner_note }}</p>
+  <p class="note">{{ icon("clipboard") }}<span>{{ site.application_note }} Ask your counselor about deadlines.</span></p>
+  {% else %}
+  <p>All classes are taught at {{ site.school_name }}.</p>
+  {% endif %}
+</section>
+
+{% if pathway.careers %}
+<section aria-labelledby="careers">
+  <h2 id="careers">{{ icon("briefcase") }}Careers it can lead to</h2>
+  <ul class="career-list">
+    {% for career in pathway.careers %}<li>{{ career }}</li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<section aria-labelledby="earn">
+  <h2 id="earn">{{ icon("award") }}What you earn</h2>
+  {% if pathway.h2 %}
+  <p>This is a high-demand, high-wage (H2) pathway. Finishing all three levels counts as completing a <strong>Success Ready Pathway</strong>, the first step toward a <strong>Diploma of Merit</strong> or <strong>Diploma of Distinction</strong>, which you need to be an <strong>Honor Graduate</strong>.</p>
+  {% else %}
+  <p>Finishing all three levels makes you a pathway completer. This pathway is not high-demand, high-wage (H2), so it does <strong>not</strong> count toward a Diploma of Merit, Diploma of Distinction, or Honor Graduate.</p>
+  {% endif %}
+  {% if pathway.certifications %}
+  <h3>Certifications</h3>
+  <ul>
+    {% for cert in pathway.certifications %}<li>{{ cert }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  <p><a href="{{ url_for('main.diplomas') }}">How diplomas and honors work{{ icon("arrow-right") }}</a></p>
+</section>
+
+{% if related %}
+<section aria-labelledby="related">
+  <h2 id="related">More in {{ area.name }}</h2>
+  <ul class="cards">
+    {% for pathway in related %}
+    {% include "_pathway_card.html" %}
+    {% endfor %}
+  </ul>
+</section>
 {% endif %}
 {% endblock %}

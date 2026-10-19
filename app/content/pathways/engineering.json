@@ -1,0 +1,35 @@
+{
+  "slug": "engineering",
+  "title": "Engineering",
+  "career_area": "advanced-manufacturing",
+  "h2": true,
+  "summary": "Learn how engineers design, build, and test solutions to real problems, from sketching ideas to making working models.",
+  "careers": [
+    "Engineering technician",
+    "Drafter (CAD designer)",
+    "Engineer (with a college degree)"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Engineering"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Engineering I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Engineering II"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

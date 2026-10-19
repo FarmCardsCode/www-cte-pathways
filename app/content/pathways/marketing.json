@@ -1,0 +1,35 @@
+{
+  "slug": "marketing",
+  "title": "Marketing",
+  "career_area": "business",
+  "h2": true,
+  "summary": "Learn how businesses get people interested in what they sell, through ads, social media, and sales.",
+  "careers": [
+    "Marketing assistant",
+    "Sales representative",
+    "Social media coordinator"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Business"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Marketing I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Business Intelligence"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

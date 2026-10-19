@@ -1,19 +1,71 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 
 {% block content %}
-<h1>Career and Technical Education Pathways</h1>
-<p class="lead">Explore the pathways offered in the district: the classes involved, the order to take them in, and what you earn for finishing.</p>
+<section class="intro">
+  <h1>Find your CTE pathway</h1>
+  <p class="lead">Career and Technical Education (CTE) pathways are sets of three classes that build real job skills. Pick one that matches what you like, and take its classes in order during high school.</p>
 
-{% if pathways %}
-<ul class="pathway-list">
-  {% for pathway in pathways %}
-  <li>
-    <a href="{{ url_for('main.pathway_detail', slug=pathway.slug) }}">{{ pathway.title }}</a>
-    <p>{{ pathway.summary }}</p>
-  </li>
-  {% endfor %}
-</ul>
+  <ol class="how-it-works" aria-label="How a pathway works">
+    <li><span class="how-step">Level 1</span> An intro class to try out the subject.</li>
+    <li><span class="how-step">Level 2</span> Build on it with more hands-on skills.</li>
+    <li><span class="how-step">Level 3</span> Finish the pathway and become a completer.</li>
+  </ol>
+</section>
+
+<form class="filters" method="get" action="{{ url_for('main.index') }}" data-autosubmit>
+  <h2 class="visually-hidden">Filter pathways</h2>
+  <div class="filter">
+    <label for="filter-area">Career area</label>
+    <select id="filter-area" name="area">
+      <option value="">All career areas</option>
+      {% for area in areas %}
+      <option value="{{ area.slug }}"{% if filters.area == area.slug %} selected{% endif %}>{{ area.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="filter">
+    <label for="filter-where">Where it's taught</label>
+    <select id="filter-where" name="where">
+      <option value="">Anywhere</option>
+      <option value="fhs"{% if filters.where == "fhs" %} selected{% endif %}>All classes at {{ site.school_short }}</option>
+      <option value="nwti"{% if filters.where == "nwti" %} selected{% endif %}>Some classes at NWTI</option>
+      <option value="nwacc"{% if filters.where == "nwacc" %} selected{% endif %}>Some classes at NWACC</option>
+    </select>
+  </div>
+  <div class="filter filter-check">
+    <input type="checkbox" id="filter-honors" name="honors" value="yes"{% if filters.honors == "yes" %} checked{% endif %}>
+    <label for="filter-honors">Only pathways that count toward Honor Graduate</label>
+  </div>
+  <div class="filter-actions">
+    <button type="submit" class="button">Show pathways</button>
+    {% if filtered %}<a href="{{ url_for('main.index') }}">Clear filters</a>{% endif %}
+  </div>
+</form>
+
+<p class="result-count" role="status">
+  {% if filtered %}Showing {{ shown_count }} of {{ total_count }} pathways.{% else %}{{ total_count }} pathways.{% endif %}
+</p>
+
+{% for group in groups %}
+<section class="area" aria-labelledby="area-{{ group.slug }}">
+  <h2 id="area-{{ group.slug }}" class="area-title">{{ icon(group.icon, "icon area-icon") }}{{ group.name }}</h2>
+  <ul class="cards">
+    {% for pathway in group.pathways %}
+    {% include "_pathway_card.html" %}
+    {% endfor %}
+  </ul>
+</section>
 {% else %}
-<p>Pathway information is coming soon.</p>
-{% endif %}
+<p class="empty">No pathways match those filters. <a href="{{ url_for('main.index') }}">Show all pathways</a>.</p>
+{% endfor %}
+
+<aside class="callout">
+  {{ icon("info") }}
+  <p><strong>What's "Honor Graduate"?</strong> Pathways marked "Counts toward Honor Graduate" are high-demand, high-wage (H2) pathways. Finishing one is the first step toward a Diploma of Merit or Distinction. <a href="{{ url_for('main.diplomas') }}">Learn how diplomas and honors work</a>.</p>
+</aside>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/filters.js') }}" defer></script>
 {% endblock %}

@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "advanced-manufacturing",
+    "name": "Advanced Manufacturing",
+    "icon": "gear"
+  },
+  {
+    "slug": "agriculture",
+    "name": "Agriculture",
+    "icon": "leaf"
+  },
+  {
+    "slug": "computer-science",
+    "name": "Computer Science",
+    "icon": "code"
+  },
+  {
+    "slug": "education",
+    "name": "Education",
+    "icon": "book"
+  },
+  {
+    "slug": "business",
+    "name": "Financial Services, Management & Entrepreneurship, Marketing",
+    "icon": "chart"
+  },
+  {
+    "slug": "healthcare",
+    "name": "Healthcare & Human Services",
+    "icon": "heart"
+  },
+  {
+    "slug": "supply-chain",
+    "name": "Supply Chain & Transportation",
+    "icon": "truck"
+  },
+  {
+    "slug": "arts",
+    "name": "Arts, Entertainment, & Design",
+    "icon": "pen"
+  }
+]

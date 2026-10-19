@@ -1,0 +1,35 @@
+{
+  "slug": "management",
+  "title": "Management",
+  "career_area": "business",
+  "h2": true,
+  "summary": "Learn how to lead a team and run a business, from planning and hiring to solving problems.",
+  "careers": [
+    "Store or office manager",
+    "Small business owner",
+    "Team supervisor"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Business"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Management I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Business Intelligence"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

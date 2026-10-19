@@ -11,9 +11,12 @@ pathway it should answer:
 - What a student earns for completing it: completer status, industry
   certifications, dual credit, endorsements, etc.
 
-Status (2026-10-19): **new project, nothing built beyond a starter scaffold.** The first
-session should settle the open questions below with the user before building
-out pages.
+Status (2026-10-19): **first build done** for Farmington High School (FHS):
+18 CTE pathways from the FHS "Honor Graduate Requirements & Pathways" guide
+(a Google Doc the maintainer shared), an overview page with filters, one page
+per pathway, and a Diplomas & Honors explainer. Branding follows the district
+site, farmcards.org (red `#DA2323`, black, white, logo gold, Inter, cardinal
+logo), with permission from the maintainer.
 
 ## Audience and tone
 
@@ -33,12 +36,23 @@ out pages.
 Content lives in JSON files so it can be updated quickly without touching
 templates, mirroring farmcardscode.org's `app/content/*` pattern:
 
-- `app/content/pathways/<slug>.json`: one file per pathway. The schema in
-  `example-pathway.json` is a **draft**: refine it with the user once real
-  pathway data is in hand.
+- `app/content/pathways/<slug>.json`: one file per pathway. `levels` is a list
+  of `{level, options}`; more than one option renders as "Choose one". `h2`
+  (high demand, high wage) means it counts toward Merit/Distinction/Honor
+  Grad. `partners` (`NWTI`, `NWACC`) plus `partner_note` say where classes
+  outside FHS are taught. `certifications` and grade levels are not in the
+  guide yet, so they stay empty and hidden.
+- `app/content/career_areas.json`: area order, names, and icon names (icons
+  are SVG macros in `app/templates/_icons.html`).
+- `app/content/diplomas.json`: Honor Grad / Merit / Distinction rules and
+  the "Words to know" glossary.
+- `app/content/site.json`: school name, partner names, application note.
 - Files with `"published": false` are skipped, so drafts can sit in the repo.
 - Never invent real course numbers, certifications, or requirements. Use
   only what the user provides, and leave clear `TODO` placeholders otherwise.
+  Course names and requirements come verbatim from the guide; the pathway
+  `summary` and `careers` text was drafted by Claude for the maintainer to
+  review.
 
 ## Stack
 
@@ -86,14 +100,14 @@ templates, mirroring farmcardscode.org's `app/content/*` pattern:
 - Requests to update the site come in ad hoc from staff; quick, safe content
   edits are the common case.
 
-## Open questions for the first session
+## Decisions (2026-10-19)
 
-1. Which pathways exist, and which are actually taught at each school?
-   (Get the official list/course guide from the user.)
-2. What does "completing" a pathway earn here: state completer status,
-   specific certifications, dual credit, graduation endorsements?
-3. Page structure: one page per pathway plus an overview/comparison page?
-   Search or filter (by career area, school, grade)?
-4. Branding: district/school name, colors, logo. Are we allowed to use them?
-5. Who besides the maintainer needs to request or approve content changes?
-6. License for the repo (farmcardscode.org uses MIT).
+- Structure: overview grouped by career area with filters (career area,
+  where taught, counts toward Honor Grad) that work without JS; detail page
+  per pathway; Diplomas & Honors page.
+- License: MIT.
+
+## Still open
+
+- Grade levels for each course, and per-pathway certifications.
+- Who besides the maintainer requests/approves content changes.

@@ -1,0 +1,36 @@
+{
+  "slug": "advertising-graphic-design",
+  "title": "Advertising & Graphic Design",
+  "career_area": "arts",
+  "h2": false,
+  "summary": "Use design software to create logos, posters, and ads that catch people's eye and share a message.",
+  "careers": [
+    "Graphic designer",
+    "Advertising designer",
+    "Print and sign maker"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Digital Arts"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Digital Design I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Digital Design II"
+      ]
+    }
+  ],
+  "partners": [],
+  "formerly": "Digital Photography",
+  "certifications": [],
+  "published": true
+}

@@ -1,23 +1,49 @@
-/* Placeholder styles for the starter scaffold. The real visual design is
-   still to be decided (see CLAUDE.md, open questions). */
+/* CTE Pathways. Colors follow Farmington Public Schools' site (farmcards.org):
+   cardinal red #DA2323, black, white, with the logo's gold as a highlight. */
 
 :root {
-  color-scheme: light dark;
-  --bg: #ffffff;
-  --text: #1a1d23;
-  --muted: #555d6b;
-  --accent: #1f5fae;
-  --border: #d8dce3;
+  color-scheme: light;
+  --brand: #DA2323;
+  --brand-strong: #B01A1A;
+  --on-brand: #ffffff;
+  --gold: #F6BC3E;
+  --on-gold: #1a1a1a;
+  --bg: #f6f6f6;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #555555;
+  --link: #B01A1A;
+  --border: #dddddd;
+  --focus: #1850c1;
+  --footer-bg: #1a1a1a;
+  --footer-text: #e6e6e6;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #15171b;
-    --text: #eceef2;
-    --muted: #a3aab7;
-    --accent: #7fb0f0;
-    --border: #2e333c;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --brand-strong: #B01A1A;
+    --bg: #121212;
+    --surface: #1d1d1d;
+    --text: #eeeeee;
+    --muted: #b3b3b3;
+    --link: #ff8a8a;
+    --border: #3a3a3a;
+    --focus: #8ab4ff;
+    --footer-bg: #000000;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121212;
+  --surface: #1d1d1d;
+  --text: #eeeeee;
+  --muted: #b3b3b3;
+  --link: #ff8a8a;
+  --border: #3a3a3a;
+  --focus: #8ab4ff;
+  --footer-bg: #000000;
 }
 
 * {
@@ -28,51 +54,586 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 1.0625rem;
   line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
 }
 
-a {
-  color: var(--accent);
+h1, h2, h3 {
+  line-height: 1.25;
 }
 
-.site-header {
-  padding: 1rem;
-  border-bottom: 1px solid var(--border);
+h1 {
+  font-size: clamp(1.75rem, 6vw, 2.4rem);
+  margin: 0.25rem 0 0.75rem;
 }
 
-.site-title {
-  font-weight: 700;
-  text-decoration: none;
+h2 {
+  font-size: 1.35rem;
+  margin: 2.25rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.page {
-  max-width: 48rem;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
+h2 .icon {
+  color: var(--brand);
 }
 
-.lead {
-  color: var(--muted);
+h3 {
   font-size: 1.1rem;
 }
 
-.pathway-list {
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+  vertical-align: -0.25em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Header: the district's red band */
+
+.site-header {
+  background: var(--brand);
+  color: var(--on-brand);
+  border-bottom: 4px solid #000;
+}
+
+.site-header-inner,
+.site-footer-inner,
+.page {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.site-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-logo {
+  background: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  width: 48px;
+  height: 48px;
+}
+
+.site-title-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.site-title-school {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.site-title-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.site-nav a {
+  color: var(--on-brand);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  border: 2px solid transparent;
+}
+
+.site-nav a:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.site-nav a[aria-current="page"] {
+  background: #fff;
+  color: var(--brand-strong);
+}
+
+.site-header :focus-visible {
+  outline-color: #fff;
+}
+
+/* Page */
+
+.page {
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 42rem;
+  margin-top: 0;
+}
+
+.how-it-works {
   list-style: none;
   padding: 0;
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 0.5rem;
 }
 
-.pathway-list li {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+.how-it-works li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand);
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
 }
 
-.pathway-list p,
-.course-list p {
-  margin: 0.25rem 0 0;
+.how-step {
+  display: block;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 40rem) {
+  .how-it-works {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Filters */
+
+.filters {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.filter label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.filter select {
+  width: 100%;
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.filter-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.filter-check input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--brand);
+  flex: none;
+}
+
+.filter-check label {
+  margin: 0;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+
+.filter-actions:not(:has(a)):has(.visually-hidden) {
+  display: none;
+}
+
+.button {
+  font: inherit;
+  font-weight: 700;
+  background: var(--brand-strong);
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+}
+
+.result-count {
+  color: var(--muted);
+  margin: 1rem 0 0;
+}
+
+/* Pathway cards */
+
+.area-title {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  border-color: var(--muted);
+  border-top-color: var(--brand);
+}
+
+.card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+/* Make the whole card clickable through the title link */
+.card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card-summary {
+  margin: 0 0 0.75rem;
   color: var(--muted);
 }
 
-.course-list li {
-  margin-bottom: 0.75rem;
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.tag-honors {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--on-gold);
+}
+
+.tag .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.empty {
+  margin: 2rem 0;
+}
+
+.callout {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+}
+
+.callout p {
+  margin: 0;
+}
+
+/* Pathway detail */
+
+.back {
+  margin: 0 0 1rem;
+}
+
+.back a,
+.page a:has(> .icon:last-child) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.eyebrow .icon {
+  color: var(--brand);
+}
+
+.formerly {
+  margin: -0.5rem 0 0.75rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pathway-header .tags {
+  margin-top: 0.75rem;
+}
+
+.levels {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.level {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+
+/* Connector line between steps */
+.level:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 2.25rem;
+  top: 2.5rem;
+  bottom: 0;
+  border-left: 3px solid var(--border);
+}
+
+.level-label {
+  flex: none;
+  width: 4.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--brand-strong);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.level-body {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+}
+
+.level-body p,
+.level-body ul {
+  margin: 0.25rem 0;
+}
+
+.level-course {
+  font-weight: 700;
+}
+
+.level-choose {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.level-options {
+  font-weight: 700;
+  padding-left: 1.25rem;
+}
+
+.level-shared {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.note {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+}
+
+.career-list {
+  padding-left: 1.25rem;
+}
+
+/* Diplomas page */
+
+.check-list {
+  padding-left: 1.25rem;
+}
+
+.check-list li {
+  margin-bottom: 0.25rem;
+}
+
+.diploma-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .diploma-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.diploma,
+.other-pathway {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: 8px;
+  padding: 0 1rem 0.5rem;
+}
+
+.other-pathway {
+  margin-bottom: 1rem;
+}
+
+.step-label {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--brand-strong);
+  color: #fff;
+  padding: 0.05rem 0.45rem;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+}
+
+dt {
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+dd {
+  margin: 0.15rem 0 0;
+}
+
+/* Footer */
+
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 4px solid var(--brand);
+  font-size: 0.95rem;
+}
+
+.site-footer-inner {
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
 }

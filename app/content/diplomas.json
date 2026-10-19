@@ -1,0 +1,79 @@
+{
+  "honor_graduate": {
+    "intro": "For the class of 2028 and younger, graduating as an Honor Graduate takes all three of these:",
+    "requirements": [
+      "A 3.5 cumulative GPA",
+      "2 years (2 credits) of the same foreign language",
+      "A Diploma of Merit or a Diploma of Distinction"
+    ]
+  },
+  "diplomas": [
+    {
+      "name": "Diploma of Merit",
+      "step1": "Complete a Success Ready Pathway.",
+      "step2_intro": "Then show one of these:",
+      "step2": [
+        "Score Platinum on WorkKeys",
+        "Earn 12 or more college (concurrent) credits",
+        "Earn AP Scholar",
+        "Earn AP Scholar with Honor",
+        "Earn the Seal of Biliteracy",
+        "Earn another industry-recognized credential"
+      ]
+    },
+    {
+      "name": "Diploma of Distinction",
+      "step1": "Complete a Success Ready Pathway.",
+      "step2_intro": "Then show one of these:",
+      "step2": [
+        "Earn a technical certificate (for example, an associate's degree or the Practical Nursing program)",
+        "Earn a Certificate of General Studies",
+        "Earn AP Scholar with Distinction"
+      ]
+    }
+  ],
+  "other_pathways": [
+    {
+      "name": "Early Postsecondary (General Bachelor's Degree Program)",
+      "summary": "Take three core college classes, one at each level.",
+      "merit": "Earn 12 college credit hours (3 core classes plus 1 more).",
+      "distinction": "Earn a technical degree (associate's degree) or a Certificate of General Studies."
+    },
+    {
+      "name": "Advanced Placement (AP)",
+      "summary": "Take any three AP classes, one at each level.",
+      "merit": "AP Scholar (a 3 or better on at least 3 AP exams), or AP Scholar with Honor (an average of at least 3.25 on all AP exams, and a 3 or better on at least 3 of them).",
+      "distinction": "AP Scholar with Distinction (an average of at least 3.5 on all AP exams, and a 3 or better on 5 or more of them)."
+    }
+  ],
+  "words": [
+    {
+      "term": "Success Ready Pathway",
+      "definition": "A set of three classes in one subject, taken in order (Level 1, Level 2, Level 3)."
+    },
+    {
+      "term": "H2 (high demand, high wage)",
+      "definition": "Jobs that employers need lots of people for and that pay well. Only H2 CTE pathways count toward the Diploma of Merit, Diploma of Distinction, and Honor Graduate."
+    },
+    {
+      "term": "CTE",
+      "definition": "Career and Technical Education: classes that teach hands-on skills for a specific career."
+    },
+    {
+      "term": "Concurrent credit",
+      "definition": "A class that earns high school credit and college credit at the same time."
+    },
+    {
+      "term": "WorkKeys",
+      "definition": "A test of job skills like reading, math, and finding information. Platinum is the highest score level."
+    },
+    {
+      "term": "Seal of Biliteracy",
+      "definition": "An award on your diploma for being able to read, write, and speak well in two languages."
+    },
+    {
+      "term": "NWTI and NWACC",
+      "definition": "Northwest Technical Institute and NorthWest Arkansas Community College. Some pathway classes are taught through them, and you need test scores and an application to get in."
+    }
+  ]
+}

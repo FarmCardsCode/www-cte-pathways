@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Diplomas &amp; Honors | {{ site.site_name }} | {{ site.school_name }}{% endblock %}
+{% block description %}How pathways count toward the Diploma of Merit, Diploma of Distinction, and Honor Graduate at {{ site.school_name }}.{% endblock %}
+
+{% block content %}
+<h1>Diplomas &amp; Honors</h1>
+<p class="lead">Finishing certain pathways can help you earn a special diploma and graduate with honors. Here's how it works.</p>
+
+<section aria-labelledby="honor-grad">
+  <h2 id="honor-grad">{{ icon("award") }}Honor Graduate</h2>
+  <p>{{ content.honor_graduate.intro }}</p>
+  <ul class="check-list">
+    {% for item in content.honor_graduate.requirements %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+</section>
+
+<section aria-labelledby="diplomas">
+  <h2 id="diplomas">{{ icon("steps") }}Diploma of Merit and Diploma of Distinction</h2>
+  <p>Both diplomas take two steps. Step 1 is the same for both.</p>
+  <div class="diploma-grid">
+    {% for diploma in content.diplomas %}
+    <article class="diploma">
+      <h3>{{ diploma.name }}</h3>
+      <p><span class="step-label">Step 1</span> {{ diploma.step1 }}</p>
+      <p><span class="step-label">Step 2</span> {{ diploma.step2_intro }}</p>
+      <ul>
+        {% for item in diploma.step2 %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="which-pathways">
+  <h2 id="which-pathways">{{ icon("info") }}Which pathways count?</h2>
+  <p>Every CTE pathway marked <strong>Counts toward Honor Graduate</strong> on this site is a high-demand, high-wage (H2) pathway, and it counts as a Success Ready Pathway for Step 1. Other CTE pathways do not count.</p>
+  <p><a href="{{ url_for('main.index', honors='yes') }}">See the CTE pathways that count{{ icon("arrow-right") }}</a></p>
+  <p>Two pathways that aren't CTE also count:</p>
+  {% for other in content.other_pathways %}
+  <article class="other-pathway">
+    <h3>{{ other.name }}</h3>
+    <p>{{ other.summary }}</p>
+    <dl>
+      <dt>For a Diploma of Merit</dt><dd>{{ other.merit }}</dd>
+      <dt>For a Diploma of Distinction</dt><dd>{{ other.distinction }}</dd>
+    </dl>
+  </article>
+  {% endfor %}
+</section>
+
+<section aria-labelledby="words">
+  <h2 id="words">Words to know</h2>
+  <dl class="glossary">
+    {% for word in content.words %}
+    <dt>{{ word.term }}</dt><dd>{{ word.definition }}</dd>
+    {% endfor %}
+  </dl>
+</section>
+{% endblock %}

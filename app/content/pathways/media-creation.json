@@ -1,0 +1,35 @@
+{
+  "slug": "media-creation",
+  "title": "Media Creation",
+  "career_area": "arts",
+  "h2": false,
+  "summary": "Make videos, audio, and other digital media, from planning a story to editing the final cut.",
+  "careers": [
+    "Video editor",
+    "Content creator",
+    "Audio or video technician"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Digital Arts"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Digital Media I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Digital Media II"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

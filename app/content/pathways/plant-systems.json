@@ -1,0 +1,35 @@
+{
+  "slug": "plant-systems",
+  "title": "Plant Systems",
+  "career_area": "agriculture",
+  "h2": true,
+  "summary": "Learn how plants and crops grow, and how to keep them healthy, from greenhouses to fields.",
+  "careers": [
+    "Greenhouse or nursery manager",
+    "Crop farmer",
+    "Landscaper"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Agriculture"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Plant Science I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Plant Science II"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

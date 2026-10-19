@@ -1,0 +1,35 @@
+{
+  "slug": "animal-systems",
+  "title": "Animal Systems",
+  "career_area": "agriculture",
+  "h2": true,
+  "summary": "Learn how to raise and care for animals, including their health, feeding, and breeding.",
+  "careers": [
+    "Veterinary technician",
+    "Livestock producer",
+    "Animal care specialist"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Agriculture"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Animal Science I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Animal Science II"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

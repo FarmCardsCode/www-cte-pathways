@@ -1,0 +1,35 @@
+{
+  "slug": "banking-finance",
+  "title": "Banking & Finance",
+  "career_area": "business",
+  "h2": true,
+  "summary": "Learn how banks, loans, saving, and investing work, for both businesses and your own money.",
+  "careers": [
+    "Bank teller",
+    "Loan officer",
+    "Financial advisor"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Business"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Banking & Finance"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Business Intelligence"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

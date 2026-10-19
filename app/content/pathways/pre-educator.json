@@ -1,0 +1,35 @@
+{
+  "slug": "pre-educator",
+  "title": "Pre-Educator",
+  "career_area": "education",
+  "h2": true,
+  "summary": "Find out what it takes to be a teacher: how kids learn and grow, and how to use technology in the classroom.",
+  "careers": [
+    "Teacher",
+    "Teacher's aide (paraprofessional)",
+    "Childcare worker"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Education"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Education Technology"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Child Growth & Development"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

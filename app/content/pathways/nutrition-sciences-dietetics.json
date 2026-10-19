@@ -1,0 +1,35 @@
+{
+  "slug": "nutrition-sciences-dietetics",
+  "title": "Nutrition Sciences & Dietetics",
+  "career_area": "healthcare",
+  "h2": false,
+  "summary": "Learn how food affects health, how to prepare food safely, and how to plan healthy meals.",
+  "careers": [
+    "Dietetic technician",
+    "Food service manager",
+    "Dietitian (with a college degree)"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Food Safety & Nutrition"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Nutrition Science I"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Nutrition Science II"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

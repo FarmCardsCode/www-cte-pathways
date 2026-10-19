@@ -1,0 +1,38 @@
+{
+  "slug": "diesel-technology",
+  "title": "Diesel Technology",
+  "career_area": "supply-chain",
+  "h2": true,
+  "summary": "Learn to service and repair diesel engines like the ones in semi trucks, tractors, and heavy equipment.",
+  "careers": [
+    "Diesel technician",
+    "Heavy equipment mechanic",
+    "Fleet maintenance technician"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Diesel Technology I"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Diesel Technology II"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Diesel Technology III: Diesel Engine"
+      ]
+    }
+  ],
+  "partners": [
+    "NWTI"
+  ],
+  "partner_note": "Offered through NWTI.",
+  "certifications": [],
+  "published": true
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "automotive-service-technology",
+  "title": "Automotive Service Technology",
+  "career_area": "supply-chain",
+  "h2": true,
+  "summary": "Learn how cars and trucks work and how to find and fix problems with engines, brakes, and electrical systems.",
+  "careers": [
+    "Automotive technician",
+    "Service writer",
+    "Parts specialist"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Automotive Service Technology I"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Automotive Service Technology II"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Automotive Service Technology III"
+      ]
+    }
+  ],
+  "partners": [
+    "NWTI"
+  ],
+  "partner_note": "Offered through NWTI.",
+  "certifications": [],
+  "published": true
+}

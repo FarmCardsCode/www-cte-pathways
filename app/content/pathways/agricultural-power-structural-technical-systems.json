@@ -1,0 +1,35 @@
+{
+  "slug": "agricultural-power-structural-technical-systems",
+  "title": "Agricultural Power, Structural, & Technical Systems",
+  "career_area": "agriculture",
+  "h2": true,
+  "summary": "Work with the machines, tools, and buildings that keep farms running, including metalwork and building projects.",
+  "careers": [
+    "Agricultural mechanic",
+    "Equipment technician",
+    "Agricultural construction worker"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Agriculture"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Agricultural Mechanics and Fabrication"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Agricultural Fabrication: Structures"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

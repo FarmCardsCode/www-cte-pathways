@@ -1,0 +1,35 @@
+{
+  "slug": "information-technology-security",
+  "title": "Information Technology & Security",
+  "career_area": "computer-science",
+  "h2": true,
+  "summary": "Learn how computers and networks work, how to write code, and how to protect systems and data from attacks.",
+  "careers": [
+    "IT support specialist",
+    "Network technician",
+    "Cybersecurity analyst"
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "options": [
+        "Introduction to Computer Science"
+      ]
+    },
+    {
+      "level": 2,
+      "options": [
+        "Information Technology & Security"
+      ]
+    },
+    {
+      "level": 3,
+      "options": [
+        "Cybersecurity Security"
+      ]
+    }
+  ],
+  "partners": [],
+  "certifications": [],
+  "published": true
+}

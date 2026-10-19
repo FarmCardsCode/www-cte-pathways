@@ -1,0 +1,13 @@
+{# Expects `pathway` and `site` in scope, and `icon` imported. #}
+<li class="card">
+  <h3 class="card-title"><a href="{{ url_for('main.pathway_detail', slug=pathway.slug) }}">{{ pathway.title }}</a></h3>
+  <p class="card-summary">{{ pathway.summary }}</p>
+  <ul class="tags">
+    {% if pathway.h2 %}
+    <li class="tag tag-honors">{{ icon("award") }}Counts toward Honor Graduate</li>
+    {% endif %}
+    {% for partner in pathway.partners or [] %}
+    <li class="tag">{{ icon("pin") }}Classes at {{ site.partners[partner].short }}</li>
+    {% endfor %}
+  </ul>
+</li>

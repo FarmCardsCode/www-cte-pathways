@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Page not found | {{ site.site_name }}{% endblock %}
+
+{% block content %}
+<h1>Page not found</h1>
+<p class="lead">We couldn't find that page. The pathway may have been renamed or removed.</p>
+<p><a href="{{ url_for('main.index') }}">See all pathways</a></p>
+{% endblock %}
